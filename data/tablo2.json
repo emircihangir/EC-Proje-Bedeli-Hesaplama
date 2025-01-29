@@ -1,0 +1,11 @@
+{
+ "tasiyici sistem yapisi" : {
+    "kagir" : 1,
+    "betonarme" : 2,
+    "celik" : 3
+ },
+ "temel sistemi" : {
+    "yuzeysel" : 1,
+    "derin" : 2
+ }
+}
