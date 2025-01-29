@@ -1,0 +1,194 @@
+{
+    "Adana" : {
+        "Adana" : 1,
+        "Adıyaman" : 0.5,
+        "Elbistan" : 0.5,
+        "Kahramanmaraş" : 0.5,
+        "Kozan" : 0.5,
+        "Niğde" : 0.5,
+        "Osmaniye" : 0.6
+    },
+    "Ankara" : {
+        "Ankara" : 1,
+        "Afyon" : 0.7,
+        "Bartın" : 0.6,
+        "Bolu" : 0.6,
+        "Çorum" : 0.75,
+        "Karabük" : 0.6,
+        "Kastamonu" : 0.6,
+        "Kayseri" : 1,
+        "Ereğli" : 0.6, 
+        "Kırşehir" : 0.6,
+        "Nevşehir" : 0.6,
+        "Sivas" : 0.6,
+        "Yozgat" : 0.5,
+        "Zonguldak" : 0.6
+    },
+    "Antalya" : {
+        "Antalya" : 1,
+        "Alanya" : 1,
+        "Burdur" : 0.5,
+        "Finike" : 1,
+        "Isparta" : 0.7,
+        "Manavgat" : 1,
+        "Serik" : 1
+    },
+    "Aydın" : {
+        "Aydın" : 1,
+        "Didim" : 1,
+        "Kuşadası" : 1,
+        "Nazilli" : 1,
+        "Söke" : 1
+    },
+    "Balıkesir":{
+        "Balıkesir" : 0.6,
+        "Altınoluk" : 0.5,
+        "Ayvalık" : 0.5,
+        "Bandırma" : 0.5,
+        "Burhaniye" : 0.5,
+        "Erdemit" : 0.5,
+        "Erdek" : 0.5
+    },
+    "Bursa" : {
+        "Bursa" : 1,
+        "Bilecik" : 1,
+        "Bozüyük" : 1,
+        "Gemlik" : 1,
+        "İnegöl" : 1,
+        "Kütahya" : 1,
+        "M.Kemalpaşa" : 1,
+        "Simav" : 1,
+        "Tavşanlı" : 1,
+        "Yalova" : 1
+    },
+    "Çanakkale" : {
+        "Çanakkale" : 0.7,
+        "Ayvacık" : 0.6,
+        "Biga" : 0.6,
+        "Çan" : 0.6,
+        "Gelibolu" : 0.6
+    },
+    "Denizli" : {
+        "Denizli" : 1
+    },
+    "Diyarbakır" : {
+        "Diyarbakır" : 1,
+        "Batman" : 0.8,
+        "Bingöl" : 0.7,
+        "Elazığ" : 0.7,
+        "Malatya" : 0.9,
+        "Mardin" : 0.8,
+        "Şanlıurfa" : 0.9,
+        "Tunceli" : 0.6,
+        "Siirt" : 0.6,
+        "Şırnak-Cizre" : 0.7
+    },
+    "Erzurum" : {
+        "Erzurum" : 0.9,
+        "Erzincan" : 0.75,
+        "Iğdır" : 0.65,
+        "Kars" : 0.7,
+        "Ardahan" : 0.65,
+        "Bayburt" : 0.7
+    },
+    "Eskişehir" : {
+        "Eskişehir" : 1
+    },
+    "Gaziantep" : {
+        "Gaziantep" : 1,
+        "Kilis" : 1
+    },
+    "Hatay" : {
+        "İskenderun" : 0.8,
+        "Samandağ" : 0.8
+    },
+    "İstanbul" : {
+        "İstanbul" : 1,
+        "Bakırköy" : 1,
+        "Kadıköy" : 1,
+        "Silivri" : 1
+    },
+    "İzmir" : {
+        "İzmir" : 1,
+        "Aliağa" : 1,
+        "Bergama" : 1,
+        "Dikili" : 1,
+        "Ödemiş" : 1,
+        "Selçuk" : 1,
+        "Tire" : 1
+    },
+    "Kocaeli" : {
+        "Kocaeli" : 0.6,
+        "Gebze" : 0.6
+    },
+    "Konya" : {
+        "Konya" : 1,
+        "Aksaray" : 1,
+        "Akşehir" : 1,
+        "Beyşehir" : 1,
+        "Ereğli" : 1,
+        "Karaman" : 1,
+        "Kulu" : 1,
+        "Seydişehir" : 1
+    },
+    "Manisa" : {
+        "Manisa" : 1,
+        "Akhisar" : 0.6,
+        "Alaşehir" : 0.65,
+        "Salihli" : 0.6,
+        "Soma" : 0.6,
+        "Turgutlu" : 0.6
+    },
+    "Mersin" : {
+        "Mersin" : 0.6,
+        "Anamur" : 0.6,
+        "Silifke" : 0.6,
+        "Tarsus" : 0.6
+    },
+    "Muğla" : {
+        "Muğla" : 1,
+        "Bodrum" : 1,
+        "Fethiye" : 1,
+        "Datça" : 1,
+        "Marmaris" : 1,
+        "Milas" : 1,
+        "Ortaca" : 1
+    },
+    "Sakarya" : {
+        "Sakarya" : 0.7,
+        "Düzce" : 0.6
+    },
+    "Samsun" : {
+        "Samsun" : 0.7,
+        "Amasya" : 0.7,
+        "Ordu" : 0.7,
+        "Sinop" : 0.7,
+        "Tokat" : 0.7
+    },
+    "Tekirdağ" : {
+        "Tekirdağ" : 0.7,
+        "Çorlu" : 0.7,
+        "Kırklareli" : 0.7,
+        "Edirne" : 0.7,
+        "Lüleburgaz" : 0.7
+    },
+    "Trabzon" : {
+        "Trabzon" : 0.6,
+        "Artvin" : 0.5,
+        "Giresun" : 0.5,
+        "Gümüşhane" : 0.5,
+        "Rize" : 0.5
+    },
+    "Uşak" : {
+        "Uşak" : 0.6
+    },
+    "Van" : {
+        "Van" : 0.8,
+        "Ağrı" : 0.7,
+        "Bitlis" : 0.7,
+        "Erciş" : 0.7,
+        "Hakkari" : 0.7,
+        "Muş" : 0.7,
+        "Yüksekova" : 0.7
+    }
+}
