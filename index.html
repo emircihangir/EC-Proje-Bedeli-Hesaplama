@@ -7,7 +7,7 @@
 
 		<link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css" />
 		<script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js" defer></script>
-        <script type="module" src="main.js" defer></script>
+        <script src="main.js" defer></script>
 	</head>
 
 	<body class="p-3">
@@ -16,38 +16,22 @@
 		<div class="container w-50">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<div class="form-group">
+					<div class="form-group mb-3">
+                        <!-- msInput = merkez şube input -->
 						<label for="msInput">Merkez Şube</label>
-						<select class="form-control" id="msInput">
-                            <option id="" value="" selected="" disabled="">Lütfen Şube Seçiniz</option>
-							<option id="Adana" value="Adana">Adana</option>
-							<option id="Ankara" value="Ankara">Ankara</option>
-							<option id="Antalya" value="Antalya">Antalya</option>
-							<option id="Aydın" value="Aydın">Aydın</option>
-							<option id="Balıkesir" value="Balıkesir">Balıkesir</option>
-							<option id="Bursa" value="Bursa">Bursa</option>
-							<option id="Çanakkale" value="Çanakkale">Çanakkale</option>
-							<option id="Denizli" value="Denizli">Denizli</option>
-							<option id="Diyarbakır" value="Diyarbakır">Diyarbakır</option>
-							<option id="Erzurum" value="Erzurum">Erzurum</option>
-							<option id="Eskişehir" value="Eskişehir">Eskişehir</option>
-							<option id="Gaziantep" value="Gaziantep">Gaziantep</option>
-							<option id="Hatay" value="Hatay">Hatay</option>
-							<option id="İstanbul" value="İstanbul">İstanbul</option>
-							<option id="İzmir" value="İzmir">İzmir</option>
-							<option id="Kocaeli" value="Kocaeli">Kocaeli</option>
-							<option id="Konya" value="Konya">Konya</option>
-							<option id="Manisa" value="Manisa">Manisa</option>
-							<option id="Mersin" value="Mersin">Mersin</option>
-							<option id="Muğla" value="Muğla">Muğla</option>
-							<option id="Sakarya" value="Sakarya">Sakarya</option>
-							<option id="Samsun" value="Samsun">Samsun</option>
-							<option id="Tekirdağ" value="Tekirdağ">Tekirdağ</option>
-							<option id="Trabzon" value="Trabzon">Trabzon</option>
-							<option id="Uşak" value="Uşak">Uşak</option>
-							<option id="Van" value="Van">Van</option>
+						<select onchange="msInput_selected(this.value)" class="form-control" id="msInput">
+                            <!-- options are retrieved from main.js -> retrive_msInput_options() -->
+                            <option selected disabled>Lütfen şube seçiniz</option>
 						</select>
 					</div>
+
+                    <div class="form-group mb-3">
+                        <!-- pubInput = Proje Uygulama Bölgesi input -->
+                        <label for="pubInput">Proje Uygulama Bölgesi</label>
+						<select onchange="pubInput_selected_value = this.value" class="form-control" id="pubInput">
+                            <option selected disabled>Lütfen önce şube seçiniz</option>
+						</select>
+                    </div>
 				</div>
 			</div>
 		</div>
