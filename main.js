@@ -46,3 +46,25 @@ function decrease_us(){
 function calculate(){
     let yapi_alani = document.getElementById("yaInput").value;
 }
+
+/** if a checkbox is selected, 
+ * automatically deselect all the other radio buttons except "Yeni Proje". */
+function select_yeni_proje_radiobutton(){
+    if(document.querySelector("input[type='radio']").checked) return;
+
+    for (let index = 0; index < document.querySelectorAll("input[type='radio']").length; index++) {
+        const radio_element = document.querySelectorAll("input[type='radio']")[index];
+        radio_element.checked = false;
+    }
+    document.querySelector("input[type='radio']").checked = true;
+}
+
+/** if a radio button other than "Yeni Proje" is selected,
+ * all the checkboxes under "Yeni Proje" should be deselected
+ */
+function deselect_checkboxes(){
+    for (let index = 0; index < document.querySelectorAll("input[type='checkbox']").length; index++) {
+        const radio_element = document.querySelectorAll("input[type='checkbox']")[index];
+        radio_element.checked = false;
+    }
+}

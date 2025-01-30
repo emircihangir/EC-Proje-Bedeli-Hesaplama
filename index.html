@@ -13,7 +13,7 @@
 	<body class="p-3">
 		<h1 class="text-center">Proje Bedeli</h1>
 
-		<div class="container w-75 mt-4" style="max-width: 500px;">
+		<div class="container w-75 mt-4" style="max-width: 500px">
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div class="form-group mb-3">
@@ -80,32 +80,79 @@
 						<!-- usInput = Uygulama Sayısı input -->
 						<label for="usInput">Uygulama Sayısı</label>
 						<div class="input-group">
-							<input id="usInput" value="1. Uygulama" disabled class="form-control">
-							 <button class="input-group-text" onclick="decrease_us()">-</button>
-							 <button class="input-group-text" onclick="increase_us()">+</button>
+							<input id="usInput" value="1. Uygulama" disabled class="form-control" />
+							<button class="input-group-text" onclick="decrease_us()">-</button>
+							<button class="input-group-text" onclick="increase_us()">+</button>
 						</div>
 					</div>
 
-					<div class="form-group mb-3">
-						<label for="">Hizmet Bölümleri</label>
-						<div class="checkbox">
-							<label><input type="checkbox" value="oneri raporu"> Öneri Raporu</label>
-						</div>
-						<div class="checkbox">
-							<label><input type="checkbox" value="on proje"> Ön Proje</label>
-						</div>
-						<div class="checkbox">
-							<label><input type="checkbox" value="uygulama projesi ve detaylari"> Uygulama Projesi ve Detayları</label>
-						</div>
-						<div class="checkbox">
-							<label><input type="checkbox" value="metraj ve kesif"> Metraj ve Keşif (kazı, kalıp, demir, beton, duvar)</label>
+					<div class="form-check">
+						<label class="form-check-label" for="yeni proje"> Yeni Proje </label>
+						<input class="form-check-input" type="radio" name="options" id="yeni proje" value="yeni proje" />
+
+						<!-- Nested checkboxes under Option 1 -->
+						<div class="ms-4 mt-2">
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									value="oneri raporu"
+									id="oneri raporu"
+									onchange="if(this.checked) select_yeni_proje_radiobutton()"
+								/>
+								<label class="form-check-label" for="oneri raporu"> Öneri Raporu </label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="on proje" id="on proje" onchange="if(this.checked) select_yeni_proje_radiobutton()" />
+								<label class="form-check-label" for="on proje"> Ön Proje </label>
+							</div>
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									value="uygulama projesi ve detaylari"
+									id="uygulama projesi ve detaylari"
+									onchange="if(this.checked) select_yeni_proje_radiobutton()"
+								/>
+								<label class="form-check-label" for="uygulama projesi ve detaylari"> Uygulama Projesi ve Detayları </label>
+							</div>
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									value="metraj ve kesif"
+									id="metraj ve kesif"
+									onchange="if(this.checked) select_yeni_proje_radiobutton()"
+								/>
+								<label class="form-check-label" for="metraj ve kesif"> Metraj ve Keşif (kazı, kalıp, demir, beton, duvar) </label>
+							</div>
 						</div>
 					</div>
 
-					<div class="form-group mb-3">
+					<div class="form-check">
+						<label class="form-check-label" for="guclendirme"> Güçlendirme Projesi </label>
+						<input class="form-check-input" type="radio" name="options" id="guclendirme" value="guclendirme" onchange="if(this.checked) deselect_checkboxes()"/>
+					</div>
+
+					<div class="form-check">
+						<label class="form-check-label" for="performans analizi"> Performans Analizi </label>
+						<input class="form-check-input" type="radio" name="options" id="performans analizi" value="performans analizi" onchange="if(this.checked) deselect_checkboxes()"/>
+					</div>
+
+					<div class="form-check">
+						<label class="form-check-label" for="roleve"> Röleve Hazırlanması </label>
+						<input class="form-check-input" type="radio" name="options" id="roleve" value="roleve" onchange="if(this.checked) deselect_checkboxes()"/>
+					</div>
+
+					<div class="form-check">
+						<label class="form-check-label" for="tadilat"> Tadilat Projesi </label>
+						<input class="form-check-input" type="radio" name="options" id="tadilat" value="tadilat" onchange="if(this.checked) deselect_checkboxes()"/>
+					</div>
+
+					<div class="form-group mb-3 mt-3">
 						<div class="input-group">
 							<!-- yaInput = Yapı Alanı input -->
-							<input id="yaInput" class="form-control" placeholder="Yapı Alanı (m²)">
+							<input id="yaInput" class="form-control" type="number" min="0" placeholder="Yapı Alanı (m²)" onchange="if(this.checked) deselect_checkboxes()"/>
 						</div>
 					</div>
 
