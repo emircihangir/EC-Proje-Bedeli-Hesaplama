@@ -60,3 +60,7 @@ function hb_item_pressed(element){
         hb_selected_values = hb_selected_values.filter(item => item !== element.value);
     }
 }
+
+function calculate(){
+    let yapi_alani = document.getElementById("yaInput").value;
+}
