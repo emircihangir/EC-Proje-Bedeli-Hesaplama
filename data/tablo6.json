@@ -2,5 +2,9 @@
     "oneri raporu" : 0.10,
     "on proje" : 0.15,
     "uygulama projesi ve detaylari" : 0.60,
-    "metraj ve kesif" : 0.15
+    "metraj ve kesif" : 0.15,
+    "guclendirme" : 0.5,
+    "performans analizi" : 0.5,
+    "roleve" : 0.1,
+    "tadilat" : 0.3
 }
