@@ -28,7 +28,7 @@
 					<div class="form-group mb-3">
 						<!-- pubInput = Proje Uygulama Bölgesi input -->
 						<label for="pubInput">Proje Uygulama Bölgesi</label>
-						<select onchange="pubInput_selected_value = this.value" class="form-control" id="pubInput">
+						<select class="form-control" id="pubInput">
 							<!-- options are retrieved from main.js -> msInput_selected() -->
 							<option selected disabled>Lütfen önce şube seçiniz</option>
 						</select>
@@ -37,7 +37,7 @@
 					<div class="form-group mb-3">
 						<!-- ygInput = Yapı Grubu input -->
 						<label for="ygInput">Yapı Grubu</label>
-						<select onchange="ygInput_selected_value = this.value" class="form-control" id="ygInput">
+						<select class="form-control" id="ygInput">
 							<option selected disabled>Yapı grubu seçiniz</option>
 							<option value="1A">1-A</option>
 							<option value="1B">1-B</option>
@@ -59,7 +59,7 @@
 					<div class="form-group mb-3">
 						<!-- tsInput = Taşıyıcı Sistem input -->
 						<label for="tsInput">Taşıyıcı Sistem</label>
-						<select onchange="tsInput_selected_value = this.value" class="form-control" id="tsInput">
+						<select class="form-control" id="tsInput">
 							<option selected disabled>Lütfen seçiniz</option>
 							<option value="kagir">Kagir</option>
 							<option value="betonarme">Betonarme</option>
@@ -69,7 +69,7 @@
 
 					<div class="form-group mb-3">
 						<label for="temelInput">Temel Sistem</label>
-						<select onchange="temelInput_selected_value = this.value" class="form-control" id="temelInput">
+						<select class="form-control" id="temelInput">
 							<option selected disabled>Lütfen seçiniz</option>
 							<option value="yuzeysel">Yüzeysel Temel</option>
 							<option value="derin">Derin Temel</option>
@@ -89,16 +89,16 @@
 					<div class="form-group mb-3">
 						<label for="">Hizmet Bölümleri</label>
 						<div class="checkbox">
-							<label><input type="checkbox" onchange="hb_item_pressed(this)" value="oneri raporu"> Öneri Raporu</label>
+							<label><input type="checkbox" value="oneri raporu"> Öneri Raporu</label>
 						</div>
 						<div class="checkbox">
-							<label><input type="checkbox" onchange="hb_item_pressed(this)" value="on proje"> Ön Proje</label>
+							<label><input type="checkbox" value="on proje"> Ön Proje</label>
 						</div>
 						<div class="checkbox">
-							<label><input type="checkbox" onchange="hb_item_pressed(this)" value="uygulama projesi ve detaylari"> Uygulama Projesi ve Detayları</label>
+							<label><input type="checkbox" value="uygulama projesi ve detaylari"> Uygulama Projesi ve Detayları</label>
 						</div>
 						<div class="checkbox">
-							<label><input type="checkbox" onchange="hb_item_pressed(this)" value="metraj ve kesif"> Metraj ve Keşif (kazı, kalıp, demir, beton, duvar)</label>
+							<label><input type="checkbox" value="metraj ve kesif"> Metraj ve Keşif (kazı, kalıp, demir, beton, duvar)</label>
 						</div>
 					</div>
 
