@@ -1,5 +1,6 @@
 let msInput_selected_value;
 let pubInput_selected_value;
+let ygInput_selected_value;
 let tablo8_data;
 
 fetch("./data/tablo8.json").then((response) => response.json()).then((data) => {

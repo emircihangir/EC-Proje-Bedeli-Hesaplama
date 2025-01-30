@@ -7,7 +7,7 @@
 
 		<link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css" />
 		<script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js" defer></script>
-        <script src="main.js" defer></script>
+		<script src="main.js" defer></script>
 	</head>
 
 	<body class="p-3">
@@ -17,21 +17,44 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div class="form-group mb-3">
-                        <!-- msInput = merkez şube input -->
+						<!-- msInput = merkez şube input -->
 						<label for="msInput">Merkez Şube</label>
 						<select onchange="msInput_selected(this.value)" class="form-control" id="msInput">
-                            <!-- options are retrieved from main.js -> retrive_msInput_options() -->
-                            <option selected disabled>Lütfen şube seçiniz</option>
+							<!-- options are retrieved from main.js -> retrive_msInput_options() -->
+							<option selected disabled>Lütfen şube seçiniz</option>
 						</select>
 					</div>
 
-                    <div class="form-group mb-3">
-                        <!-- pubInput = Proje Uygulama Bölgesi input -->
-                        <label for="pubInput">Proje Uygulama Bölgesi</label>
+					<div class="form-group mb-3">
+						<!-- pubInput = Proje Uygulama Bölgesi input -->
+						<label for="pubInput">Proje Uygulama Bölgesi</label>
 						<select onchange="pubInput_selected_value = this.value" class="form-control" id="pubInput">
-                            <option selected disabled>Lütfen önce şube seçiniz</option>
+							<!-- options are retrieved from main.js -> msInput_selected() -->
+							<option selected disabled>Lütfen önce şube seçiniz</option>
 						</select>
-                    </div>
+					</div>
+
+					<div class="form-group mb-3">
+						<!-- ygInput = Yapı Grubu input -->
+						<label for="ygInput">Yapı Grubu</label>
+						<select onchange="ygInput_selected_value = this.value" class="form-control" id="ygInput">
+							<option selected disabled>Yapı grubu seçiniz</option>
+							<option value="1A">1-A</option>
+							<option value="1B">1-B</option>
+							<option value="2A">2-A</option>
+							<option value="2B">2-B</option>
+							<option value="2C">2-C</option>
+							<option value="3A">3-A</option>
+							<option value="3B">3-B</option>
+							<option value="4A">4-A</option>
+							<option value="4B">4-B</option>
+							<option value="4C">4-C</option>
+							<option value="5A">5-A</option>
+							<option value="5B">5-B</option>
+							<option value="5C">5-C</option>
+							<option value="5D">5-D</option>
+						</select>
+					</div>
 				</div>
 			</div>
 		</div>
