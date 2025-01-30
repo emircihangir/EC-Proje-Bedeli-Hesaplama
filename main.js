@@ -5,6 +5,7 @@ let tablo8_data;
 let tsInput_selected_value;
 let temelInput_selected_value;
 let uygulama_sayisi = 1;
+let hb_selected_values = [];
 
 fetch("./data/tablo8.json").then((response) => response.json()).then((data) => {
     tablo8_data = data;
@@ -49,4 +50,13 @@ function decrease_us(){
 
     uygulama_sayisi -= 1;
     document.getElementById("usInput").value = uygulama_sayisi.toString() + ". Uygulama";
+}
+
+function hb_item_pressed(element){
+    if(element.checked){
+        hb_selected_values.push(element.value);
+    }
+    else{
+        hb_selected_values = hb_selected_values.filter(item => item !== element.value);
+    }
 }
