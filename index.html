@@ -55,6 +55,26 @@
 							<option value="5D">5-D</option>
 						</select>
 					</div>
+
+					<div class="form-group mb-3">
+						<!-- tsInput = Taşıyıcı Sistem input -->
+						<label for="tsInput">Taşıyıcı Sistem</label>
+						<select onchange="tsInput_selected_value = this.value" class="form-control" id="tsInput">
+							<option selected disabled>Lütfen seçiniz</option>
+							<option value="kagir">Kagir</option>
+							<option value="betonarme">Betonarme</option>
+							<option value="celik">Çelik</option>
+						</select>
+					</div>
+
+					<div class="form-group mb-3">
+						<label for="temelInput">Temel Sistem</label>
+						<select onchange="temelInput_selected_value = this.value" class="form-control" id="temelInput">
+							<option selected disabled>Lütfen seçiniz</option>
+							<option value="yuzeysel">Yüzeysel Temel</option>
+							<option value="derin">Derin Temel</option>
+						</select>
+					</div>
 				</div>
 			</div>
 		</div>
