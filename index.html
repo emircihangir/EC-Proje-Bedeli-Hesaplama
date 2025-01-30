@@ -21,7 +21,7 @@
 						<label for="msInput">Merkez Şube</label>
 						<select onchange="msInput_selected(this.value)" class="form-control" id="msInput">
 							<!-- options are retrieved from main.js -> retrive_msInput_options() -->
-							<option selected disabled>Lütfen şube seçiniz</option>
+							<option selected disabled value="empty">Lütfen şube seçiniz</option>
 						</select>
 					</div>
 
@@ -30,7 +30,7 @@
 						<label for="pubInput">Proje Uygulama Bölgesi</label>
 						<select class="form-control" id="pubInput">
 							<!-- options are retrieved from main.js -> msInput_selected() -->
-							<option selected disabled>Lütfen önce şube seçiniz</option>
+							<option selected disabled value="empty">Lütfen önce şube seçiniz</option>
 						</select>
 					</div>
 
@@ -38,7 +38,7 @@
 						<!-- ygInput = Yapı Grubu input -->
 						<label for="ygInput">Yapı Grubu</label>
 						<select class="form-control" id="ygInput">
-							<option selected disabled>Yapı grubu seçiniz</option>
+							<option selected disabled value="empty">Yapı grubu seçiniz</option>
 							<option value="1A">1-A</option>
 							<option value="1B">1-B</option>
 							<option value="2A">2-A</option>
@@ -60,7 +60,7 @@
 						<!-- tsInput = Taşıyıcı Sistem input -->
 						<label for="tsInput">Taşıyıcı Sistem</label>
 						<select class="form-control" id="tsInput">
-							<option selected disabled>Lütfen seçiniz</option>
+							<option selected disabled value="empty">Lütfen seçiniz</option>
 							<option value="kagir">Kagir</option>
 							<option value="betonarme">Betonarme</option>
 							<option value="celik">Çelik</option>
@@ -70,7 +70,7 @@
 					<div class="form-group mb-3">
 						<label for="temelInput">Temel Sistem</label>
 						<select class="form-control" id="temelInput">
-							<option selected disabled>Lütfen seçiniz</option>
+							<option selected disabled value="empty">Lütfen seçiniz</option>
 							<option value="yuzeysel">Yüzeysel Temel</option>
 							<option value="derin">Derin Temel</option>
 						</select>
@@ -90,8 +90,7 @@
 						<label class="form-check-label" for="yeni proje"> Yeni Proje </label>
 						<input class="form-check-input" type="radio" name="options" id="yeni proje" value="yeni proje" />
 
-						<!-- Nested checkboxes under Option 1 -->
-						<div class="ms-4 mt-2">
+						<div class="ms-4 mt-2" id="yeni_proje_checkbox_div">
 							<div class="form-check">
 								<input
 									class="form-check-input"
@@ -140,7 +139,7 @@
 					</div>
 
 					<div class="form-check">
-						<label class="form-check-label" for="roleve"> Röleve Hazırlanması </label>
+						<label class="form-check-label" for="roleve"> Röleve Hazırlama </label>
 						<input class="form-check-input" type="radio" name="options" id="roleve" value="roleve" onchange="if(this.checked) deselect_checkboxes()"/>
 					</div>
 
