@@ -4,6 +4,7 @@ let ygInput_selected_value;
 let tablo8_data;
 let tsInput_selected_value;
 let temelInput_selected_value;
+let uygulama_sayisi = 1;
 
 fetch("./data/tablo8.json").then((response) => response.json()).then((data) => {
     tablo8_data = data;
@@ -36,4 +37,16 @@ function msInput_selected(selected_value){
         }
         pubInput.innerHTML += html_string;
     }
+}
+
+function increase_us(){
+    uygulama_sayisi += 1;
+    document.getElementById("usInput").value = uygulama_sayisi.toString() + ". Uygulama";
+}
+
+function decrease_us(){
+    if(uygulama_sayisi == 1) return;
+
+    uygulama_sayisi -= 1;
+    document.getElementById("usInput").value = uygulama_sayisi.toString() + ". Uygulama";
 }
