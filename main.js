@@ -140,18 +140,22 @@ async function calculate() {
         });
 
         //* Calculate HB
-        if (document.getElementById("yeni proje").checked) {
-            // get the checkboxes
-            let checkboxes = document.querySelectorAll("#yeni_proje_checkbox_div input[type='checkbox']");
-            let result = 0;
-            await fetch("./data/tablo6.json").then((response) => response.json()).then((tablo6_data) => {
+        await fetch("./data/tablo6.json").then((response) => response.json()).then((tablo6_data) => {
+            if (document.getElementById("yeni proje").checked) {
+                // get the checkboxes
+                let checkboxes = document.querySelectorAll("#yeni_proje_checkbox_div input[type='checkbox']");
+                let result = 0;
                 for (let index = 0; index < checkboxes.length; index++) {
                     const checkbox = checkboxes[index];
                     if (checkbox.checked) result += tablo6_data[checkbox.value];
                 }
                 HB = result;
-            });
-        }
+            }
+            else{
+                let selected_value = document.querySelector('input[name="options"]:checked').value;
+                HB = tablo6_data[selected_value];
+            }
+        });
 
         //* Calculate BK
         await fetch("./data/tablo8.json").then((response) => response.json()).then((tablo8_data) => {
