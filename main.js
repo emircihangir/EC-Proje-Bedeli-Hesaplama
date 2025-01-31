@@ -119,7 +119,6 @@ async function calculate() {
                     if (parseInt(tablo4_row[0]) > YA) {
                         const pricing_row = tablo4_data[index - 1].split(",");
                         PUO = parseFloat(pricing_row[parseInt(ygInput.value[0])]) / 100;
-                        console.log(pricing_row);
                         break;
                     }
                 }
@@ -143,15 +142,15 @@ async function calculate() {
         await fetch("./data/tablo6.json").then((response) => response.json()).then((tablo6_data) => {
             if (document.getElementById("yeni proje").checked) {
                 // get the checkboxes
-                let checkboxes = document.querySelectorAll("#yeni_proje_checkbox_div input[type='checkbox']");
+                let checkboxes = document.querySelectorAll("#yeni_proje_checkbox_div input[type='checkbox']:checked");
                 let result = 0;
                 for (let index = 0; index < checkboxes.length; index++) {
                     const checkbox = checkboxes[index];
-                    if (checkbox.checked) result += tablo6_data[checkbox.value];
+                    result += tablo6_data[checkbox.value];
                 }
                 HB = result;
             }
-            else{
+            else {
                 let selected_value = document.querySelector('input[name="options"]:checked').value;
                 HB = tablo6_data[selected_value];
             }
@@ -162,16 +161,93 @@ async function calculate() {
             BK = tablo8_data[msInput.value][pubInput.value];
         });
 
+        PUO = parseFloat(PUO.toPrecision(2));
         let result = YA * BM * YSK * PUO * IMHO * PYK * HB * BK;
+        // result = parseFloat(result.toPrecision(3));
 
-        console.log("BM", BM);
-        console.log("YSK", YSK);
-        console.log("PUO", PUO);
-        console.log("PYK", PYK);
-        console.log("HB", HB);
-        console.log("BK", BK);
-        console.log("Sonuç: ", result);
+        //* Log the calculation to the console
+        const debug_log = {
+            "BM": BM,
+            "YSK": YSK,
+            "PUO": PUO,
+            "PYK": PYK,
+            "HB": HB,
+            "BK": BK
+        };
+        console.table(debug_log);
+        let _result = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(result);
+        console.info("Sonuç", _result);
+
+        if(document.getElementById("yeni proje").checked == false) display_result(result);
+        else display_result(result / HB);
     }
+}
+
+async function display_result(result){
+    //* If the project type is "yeni proje", a table will be displayed.
+    //* Otherwise, just a text will be displayed.
+
+    document.getElementById("resultDiv").replaceChildren();
+
+    if(document.getElementById("yeni proje").checked){
+        
+        document.getElementById("resultDiv").innerHTML+= `
+            <div class="table-responsive mt-4">
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Proje</th>
+                            <th scope="col" class="text-end">Ücret</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Toplam Yeni Proje Ücreti</th>
+                            <th class="text-end"></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        `;
+
+        let selected_checkboxes = document.querySelectorAll("#yeni_proje_checkbox_div input[type='checkbox']:checked");
+        let total_price = 0;
+
+        await fetch("./data/tablo6.json").then((response) => response.json()).then((tablo6_data) => {
+            for (let index = 0; index < selected_checkboxes.length; index++) {
+                const sc = selected_checkboxes[index]; // sc = selected checkbox
+                let tsv = result * tablo6_data[sc.value]; // tsv = this service's value
+                let _tsv = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(tsv);
+                document.querySelector("table tbody").innerHTML += `
+                    <tr>
+                        <td>`+document.querySelector("label[for='"+ sc.id +"']").innerHTML+`</td>
+                        <td class="text-end">`+_tsv+`</td>
+                    </tr>
+                `;
+                total_price += tsv;
+            }
+        });
+        let _total_price = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(total_price);
+        document.querySelector("table tfoot tr th.text-end").innerHTML += _total_price;
+
+    }
+    else{
+        let _result = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(result);
+        const sr = document.querySelector('input[name="options"]:checked').id; // sr = selected radiobutton
+        const label = document.querySelector("label[for='"+sr+"']").innerHTML;
+        let p = document.createElement("p");
+        p.innerHTML = label + " Ücreti: " + _result;
+        p.className = "text-center mt-4 fs-5";
+        document.getElementById("resultDiv").appendChild(p);
+    }
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+      });
 }
 
 /** if a checkbox is selected, 
