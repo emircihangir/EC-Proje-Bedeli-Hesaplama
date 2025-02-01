@@ -161,7 +161,7 @@ async function calculate() {
             BK = tablo8_data[msInput.value][pubInput.value];
         });
 
-        PUO = parseFloat(PUO.toPrecision(2));
+        PUO = parseFloat(PUO.toPrecision(4));
         let result = YA * BM * YSK * PUO * IMHO * PYK * HB * BK;
         // result = parseFloat(result.toPrecision(3));
 
