@@ -125,7 +125,7 @@ async function tab1_calculate() {
             tablo4_data.shift();
 
             if (YA >= 80000) {
-                const pricing_row = [80000, 0.67, 0.75, 0.83, 0.92, 1.00];
+                const pricing_row = tablo4_data[tablo4_data.length - 1].split(",");
                 PUO = parseFloat(pricing_row[parseInt(ygInput.value[0])]) / 100;
             }
             else {
