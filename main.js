@@ -97,9 +97,7 @@ async function tab1_calculate() {
         yaInput.classList.add("border-3", "border-danger");
         should_calculate = false;
     }
-    else {
-        yaInput.classList.remove("border-3", "border-danger");
-    }
+    else yaInput.classList.remove("border-3", "border-danger");
 
     if (should_calculate) {
 
