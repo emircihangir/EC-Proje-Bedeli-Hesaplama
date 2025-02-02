@@ -38,6 +38,19 @@ fetch("./data/yapi-sinifi-puani.json").then((response) => response.json()).then(
     }
 });
 
+//* Retrieve the options for temelInput
+fetch("./data/yapi-sinifi-puani.json").then((response) => response.json()).then((ysp_data) => {
+    // ysp_data = yapı sınıfı puanı data
+    const ts_data = ysp_data["temel sistemi"]; // ts_data = temel sistemi data
+
+    for (let index = 0; index < Object.keys(ts_data).length; index++) {
+        const key_name = Object.keys(ts_data)[index];
+        document.getElementById("temelInput").innerHTML += `
+        <option value="`+key_name+`">`+key_name+`</option>
+        `;
+    }
+});
+
 function retrive_msInput_options(data) {
     let msInput = document.getElementById("msInput");
 
