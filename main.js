@@ -1,8 +1,28 @@
 let uygulama_sayisi = 1;
 let uygulama_sayisi_tab2 = 1;
 
-fetch("./data/tablo8.json").then((response) => response.json()).then((tablo8_data) => {
+//* Retrieve the options for msInput
+fetch("./data/bolge-katsayileri.json").then((response) => response.json()).then((tablo8_data) => {
     retrive_msInput_options(tablo8_data);
+});
+
+//* Retrieve the options for ygInput
+fetch("./data/birim-maliyet.json").then((response) => response.json()).then((bm_data) => {
+    for (let index = 0; index < Object.keys(bm_data).length; index++) {
+        const key_name = Object.keys(bm_data)[index];
+        let key_name_sliced = key_name.slice(0,1);
+
+        for (let index = 0; index < Object.keys(bm_data[key_name]).length; index++) {
+            const second_key_name = Object.keys(bm_data[key_name])[index];
+            document.getElementById("ygInput").innerHTML += `
+            <option value="`+key_name_sliced + second_key_name+`">`+key_name_sliced + '-' + second_key_name+`</option>
+            `;
+
+            document.getElementById("ygInput_tab2").innerHTML += `
+            <option value="`+key_name_sliced + second_key_name+`">`+key_name_sliced + '-' + second_key_name+`</option>
+            `;
+        }
+    }
 });
 
 function retrive_msInput_options(data) {
@@ -19,7 +39,7 @@ function msInput_selected(selected_value) {
     pubInput.innerHTML = "";
 
     //* retrieve the options for pubInput
-    fetch("./data/tablo8.json").then((response) => response.json()).then((tablo8_data) => {
+    fetch("./data/bolge-katsayileri.json").then((response) => response.json()).then((tablo8_data) => {
         for (let index = 0; index < Object.keys(tablo8_data[selected_value]).length; index++) {
             const element = Object.keys(tablo8_data[selected_value])[index];
             let html_string;
@@ -173,7 +193,7 @@ async function tab1_calculate() {
         });
 
         //* Calculate BK
-        await fetch("./data/tablo8.json").then((response) => response.json()).then((tablo8_data) => {
+        await fetch("./data/bolge-katsayileri.json").then((response) => response.json()).then((tablo8_data) => {
             BK = tablo8_data[msInput.value][pubInput.value];
         });
 
