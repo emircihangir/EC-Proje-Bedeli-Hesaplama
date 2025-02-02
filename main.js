@@ -104,23 +104,23 @@ async function tab1_calculate() {
         //* Calculate BM
         let ygInput_0 = ygInput.value[0];
         let ygInput_1 = ygInput.value[1];
-        await fetch("./data/tablo1.json").then((response) => response.json()).then((tablo1_data) => {
+        await fetch("./data/birim-maliyet.json.json").then((response) => response.json()).then((tablo1_data) => {
             BM = tablo1_data[ygInput_0 + ". sinif yapilar"][ygInput_1];
         });
 
         //* Calculate YSK
-        await fetch("./data/tablo2.json").then((response) => response.json()).then((tablo2_data) => {
+        await fetch("./data/ yapi-sinifi-puani.json").then((response) => response.json()).then((tablo2_data) => {
             ysk_puani += tablo2_data["tasiyici sistem yapisi"][tsInput.value];
         });
-        await fetch("./data/tablo2.json").then((response) => response.json()).then((tablo2_data) => {
+        await fetch("./data/ yapi-sinifi-puani.json").then((response) => response.json()).then((tablo2_data) => {
             ysk_puani += tablo2_data["temel sistemi"][temelInput.value];
         });
-        await fetch("./data/tablo3.json").then((response) => response.json()).then((tablo3_data) => {
+        await fetch("./data/yapi-sinifi-katsayisi.json").then((response) => response.json()).then((tablo3_data) => {
             YSK = tablo3_data[ysk_puani];
         });
 
         //* Calculate PUO
-        await fetch("./data/tablo4.csv").then((response) => response.text()).then((tablo4_data) => {
+        await fetch("./data/ucret-oranlari.csv").then((response) => response.text()).then((tablo4_data) => {
             tablo4_data = tablo4_data.split("\n");
             tablo4_data.shift();
 
@@ -229,7 +229,7 @@ async function tab2_calculate(){
         //* Calculate BM
         let ygInput_0 = ygInput.value[0];
         let ygInput_1 = ygInput.value[1];
-        await fetch("./data/tablo1.json").then((response) => response.json()).then((tablo1_data) => {
+        await fetch("./data/birim-maliyet.json.json").then((response) => response.json()).then((tablo1_data) => {
             BM = tablo1_data[ygInput_0 + ". sinif yapilar"][ygInput_1];
         });
 
