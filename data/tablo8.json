@@ -19,7 +19,7 @@
         "Kayseri" : 1,
         "Ereğli" : 0.6, 
         "Kırşehir" : 0.6,
-        "Nevşehir" : 0.6,
+        "Nevşehir" : 0.75,
         "Sivas" : 0.6,
         "Yozgat" : 0.5,
         "Zonguldak" : 0.6
@@ -41,7 +41,7 @@
         "Söke" : 1
     },
     "Balıkesir":{
-        "Balıkesir" : 0.6,
+        "Balıkesir" : 1,
         "Altınoluk" : 0.5,
         "Ayvalık" : 0.5,
         "Bandırma" : 0.5,
@@ -99,6 +99,7 @@
         "Kilis" : 1
     },
     "Hatay" : {
+        "Hatay" : 0.8,
         "İskenderun" : 0.8,
         "Samandağ" : 0.8
     },
