@@ -1,11 +1,18 @@
 {
  "tasiyici sistem yapisi" : {
-    "kagir" : 1,
-    "betonarme" : 2,
-    "celik" : 3
+    "Kagir-Yığma" : 1,
+    "Betonarme" : 2,
+    "Betonarme Prefabrik" : 2,
+    "Ahşap" : 3,
+    "Çelik-Hafif Çelik" : 3,
+    "Deprem Yalıtımlı Yapılar (Çelik veya Betonamre)" : 5,
+    "Betonarme Yüksek Yapılar (TBDY Tablo 3.3'e göre BYS=1 olan yapılar)" : 5,
+    "Çelik Yüksek Yapılar (TBDY Tablo 3.3'e göre BYS=1 olan yapılar)" : 6,
+    "Şekil Değiştirmeye Göre Tasarım Gerektiren Yapılar (Çelik veye Betonarme)" : 4,
+    "Mevcut Yapı Performans Analizi ve Güçlendirme" : 4    
  },
  "temel sistemi" : {
-    "yuzeysel" : 1,
-    "derin" : 2
+    "Yüzeysel" : 1,
+    "Derin" : 2
  }
 }
