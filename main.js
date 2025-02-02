@@ -150,15 +150,15 @@ async function tab1_calculate() {
         //* Calculate BM
         let ygInput_0 = ygInput.value[0];
         let ygInput_1 = ygInput.value[1];
-        await fetch("./data/birim-maliyet.json.json").then((response) => response.json()).then((tablo1_data) => {
+        await fetch("./data/birim-maliyet.json").then((response) => response.json()).then((tablo1_data) => {
             BM = tablo1_data[ygInput_0 + ". sinif yapilar"][ygInput_1];
         });
 
         //* Calculate YSK
-        await fetch("./data/ yapi-sinifi-puani.json").then((response) => response.json()).then((tablo2_data) => {
+        await fetch("./data/yapi-sinifi-puani.json").then((response) => response.json()).then((tablo2_data) => {
             ysk_puani += tablo2_data["tasiyici sistem yapisi"][tsInput.value];
         });
-        await fetch("./data/ yapi-sinifi-puani.json").then((response) => response.json()).then((tablo2_data) => {
+        await fetch("./data/yapi-sinifi-puani.json").then((response) => response.json()).then((tablo2_data) => {
             ysk_puani += tablo2_data["temel sistemi"][temelInput.value];
         });
         await fetch("./data/yapi-sinifi-katsayisi.json").then((response) => response.json()).then((tablo3_data) => {
@@ -188,7 +188,7 @@ async function tab1_calculate() {
         });
 
         //* Calculate PYK
-        await fetch("./data/tablo5.json").then((response) => response.json()).then((tablo5_data) => {
+        await fetch("./data/proje-yineleme-katsayisi.json").then((response) => response.json()).then((tablo5_data) => {
             let result = 0;
             for (let index = 1; index <= uygulama_sayisi; index++) {
                 let k;
@@ -201,7 +201,7 @@ async function tab1_calculate() {
         });
 
         //* Calculate HB
-        await fetch("./data/tablo6.json").then((response) => response.json()).then((tablo6_data) => {
+        await fetch("./data/hizmet-bolumleri.json").then((response) => response.json()).then((tablo6_data) => {
             if (document.getElementById("yeni proje").checked) {
                 // get the checkboxes
                 let checkboxes = document.querySelectorAll("#yeni_proje_checkbox_div input[type='checkbox']:checked");
@@ -275,7 +275,7 @@ async function tab2_calculate(){
         //* Calculate BM
         let ygInput_0 = ygInput.value[0];
         let ygInput_1 = ygInput.value[1];
-        await fetch("./data/birim-maliyet.json.json").then((response) => response.json()).then((tablo1_data) => {
+        await fetch("./data/birim-maliyet.json").then((response) => response.json()).then((tablo1_data) => {
             BM = tablo1_data[ygInput_0 + ". sinif yapilar"][ygInput_1];
         });
 
@@ -326,7 +326,7 @@ async function tab2_calculate(){
         });
 
         //* Calculate PYK
-        await fetch("./data/tablo5.json").then((response) => response.json()).then((tablo5_data) => {
+        await fetch("./data/proje-yineleme-katsayisi.json").then((response) => response.json()).then((tablo5_data) => {
             let result = 0;
             for (let index = 1; index <= uygulama_sayisi_tab2; index++) {
                 let k;
@@ -399,7 +399,7 @@ async function display_result(result){
         let selected_checkboxes = document.querySelectorAll("#yeni_proje_checkbox_div input[type='checkbox']:checked");
         let total_price = 0;
 
-        await fetch("./data/tablo6.json").then((response) => response.json()).then((tablo6_data) => {
+        await fetch("./data/hizmet-bolumleri.json").then((response) => response.json()).then((tablo6_data) => {
             for (let index = 0; index < selected_checkboxes.length; index++) {
                 const sc = selected_checkboxes[index]; // sc = selected checkbox
                 let tsv = result * tablo6_data[sc.value]; // tsv = this service's value
