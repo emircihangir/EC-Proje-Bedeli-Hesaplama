@@ -8,7 +8,7 @@
     "Deprem Yalıtımlı Yapılar (Çelik veya Betonamre)" : 5,
     "Betonarme Yüksek Yapılar (BYS=1 olan yapılar)" : 5,
     "Çelik Yüksek Yapılar (BYS=1 olan yapılar)" : 6,
-    "ŞDGT Gerektiren Yapılar (Çelik veye Betonarme)" : 4,
+    "ŞGDT Gerektiren Yapılar (Çelik veye Betonarme)" : 4,
     "Mevcut Yapı Performans Analizi ve Güçlendirme" : 4    
  },
  "temel sistemi" : {
