@@ -6,13 +6,13 @@
     "Ahşap" : 3,
     "Çelik-Hafif Çelik" : 3,
     "Deprem Yalıtımlı Yapılar (Çelik veya Betonamre)" : 5,
-    "Betonarme Yüksek Yapılar (TBDY Tablo 3.3'e göre BYS=1 olan yapılar)" : 5,
-    "Çelik Yüksek Yapılar (TBDY Tablo 3.3'e göre BYS=1 olan yapılar)" : 6,
-    "Şekil Değiştirmeye Göre Tasarım Gerektiren Yapılar (Çelik veye Betonarme)" : 4,
+    "Betonarme Yüksek Yapılar (BYS=1 olan yapılar)" : 5,
+    "Çelik Yüksek Yapılar (BYS=1 olan yapılar)" : 6,
+    "ŞDGT Gerektiren Yapılar (Çelik veye Betonarme)" : 4,
     "Mevcut Yapı Performans Analizi ve Güçlendirme" : 4    
  },
  "temel sistemi" : {
-    "Yüzeysel" : 1,
-    "Derin" : 2
+    "Yüzeysel Temeller" : 1,
+    "Derin Temeller" : 2
  }
 }
