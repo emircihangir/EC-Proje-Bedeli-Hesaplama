@@ -25,6 +25,19 @@ fetch("./data/birim-maliyet.json").then((response) => response.json()).then((bm_
     }
 });
 
+//* Retrieve the options for tsInput
+fetch("./data/yapi-sinifi-puani.json").then((response) => response.json()).then((ysp_data) => {
+    // ysp_data = yapı sınıfı puanı data
+    const tsy_data = ysp_data["tasiyici sistem yapisi"]; // tsy_data = tasiyici sistem yapisi data
+
+    for (let index = 0; index < Object.keys(tsy_data).length; index++) {
+        const key_name = Object.keys(tsy_data)[index];
+        document.getElementById("tsInput").innerHTML += `
+        <option value="`+key_name+`">`+key_name+`</option>
+        `;
+    }
+});
+
 function retrive_msInput_options(data) {
     let msInput = document.getElementById("msInput");
 
