@@ -1,5 +1,4 @@
 let uygulama_sayisi = 1;
-let uygulama_sayisi_tab2 = 1;
 
 //* Retrieve the options for msInput
 fetch("./data/bolge-katsayileri.json").then((response) => response.json()).then((tablo8_data) => {
@@ -10,16 +9,12 @@ fetch("./data/bolge-katsayileri.json").then((response) => response.json()).then(
 fetch("./data/birim-maliyet.json").then((response) => response.json()).then((bm_data) => {
     for (let index = 0; index < Object.keys(bm_data).length; index++) {
         const key_name = Object.keys(bm_data)[index];
-        let key_name_sliced = key_name.slice(0,1);
+        let key_name_sliced = key_name.slice(0, 1);
 
         for (let index = 0; index < Object.keys(bm_data[key_name]).length; index++) {
             const second_key_name = Object.keys(bm_data[key_name])[index];
             document.getElementById("ygInput").innerHTML += `
-            <option value="`+key_name_sliced + second_key_name+`">`+key_name_sliced + '-' + second_key_name+`</option>
-            `;
-
-            document.getElementById("ygInput_tab2").innerHTML += `
-            <option value="`+key_name_sliced + second_key_name+`">`+key_name_sliced + '-' + second_key_name+`</option>
+            <option value="`+ key_name_sliced + second_key_name + `">` + key_name_sliced + '-' + second_key_name + `</option>
             `;
         }
     }
@@ -33,7 +28,7 @@ fetch("./data/yapi-sinifi-puani.json").then((response) => response.json()).then(
     for (let index = 0; index < Object.keys(tsy_data).length; index++) {
         const key_name = Object.keys(tsy_data)[index];
         document.getElementById("tsInput").innerHTML += `
-        <option value="`+key_name+`">`+key_name+`</option>
+        <option value="`+ key_name + `">` + key_name + `</option>
         `;
     }
 });
@@ -46,7 +41,7 @@ fetch("./data/yapi-sinifi-puani.json").then((response) => response.json()).then(
     for (let index = 0; index < Object.keys(ts_data).length; index++) {
         const key_name = Object.keys(ts_data)[index];
         document.getElementById("temelInput").innerHTML += `
-        <option value="`+key_name+`">`+key_name+`</option>
+        <option value="`+ key_name + `">` + key_name + `</option>
         `;
     }
 });
@@ -78,33 +73,18 @@ function msInput_selected(selected_value) {
     });
 }
 
-function increase_us(is_tab2 = false) {
-    if(is_tab2){
-        uygulama_sayisi_tab2 += 1;
-        document.getElementById("usInput_tab2").value = uygulama_sayisi_tab2.toString() + ". Uygulama";
-    }
-    else{
-        uygulama_sayisi += 1;
-        document.getElementById("usInput").value = uygulama_sayisi.toString() + ". Uygulama";
-    }
+function increase_us() {
+    uygulama_sayisi += 1;
+    document.getElementById("usInput").value = uygulama_sayisi.toString() + ". Uygulama";
 }
 
-function decrease_us(is_tab2 = false) {
-    if(is_tab2){
-        if (uygulama_sayisi_tab2 == 1) return;
-
-        uygulama_sayisi_tab2 -= 1;
-        document.getElementById("usInput_tab2").value = uygulama_sayisi_tab2.toString() + ". Uygulama";
-    }
-    else{
-        if (uygulama_sayisi == 1) return;
-
-        uygulama_sayisi -= 1;
-        document.getElementById("usInput").value = uygulama_sayisi.toString() + ". Uygulama";
-    }    
+function decrease_us() {
+    if (uygulama_sayisi == 1) return;
+    uygulama_sayisi -= 1;
+    document.getElementById("usInput").value = uygulama_sayisi.toString() + ". Uygulama";
 }
 
-async function tab1_calculate() {
+async function pb_calculate() {
     let should_calculate = true;
     let yaInput = document.getElementById("yaInput");
     let msInput = document.getElementById("msInput");
@@ -240,141 +220,21 @@ async function tab1_calculate() {
         let _result = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(result);
         console.info("Sonuç", _result);
 
-        if(document.getElementById("yeni proje").checked == false) display_result(result);
+        if (document.getElementById("yeni proje").checked == false) display_result(result);
         else display_result(result / HB);
     }
 }
 
-async function tab2_calculate(){
-    let YA, BM, HBK, PYK;
-    // YA : Yapı Alanı
-    // BM : Birim Maliyet
-    // HBK : Hizmet Bedeli Katsayısı
-    // PYK : Proje Yineleme Katsayısı
-
-    let should_calculate = true;
-    let yaInput = document.getElementById("yaInput_tab2");
-    let ygInput = document.getElementById("ygInput_tab2");
-
-    YA = parseInt(yaInput.value);
-    if (Number.isNaN(YA) || YA < 0 || YA > 100000) {
-        yaInput.classList.add("border-3", "border-danger");
-        should_calculate = false;
-    }
-    else {
-        yaInput.classList.remove("border-3", "border-danger");
-    }
-
-    if (ygInput.value == "empty") {
-        ygInput.classList.add("border-3", "border-danger");
-        should_calculate = false;
-    }
-    else ygInput.classList.remove("border-3", "border-danger");
-
-    if(should_calculate){
-        //* Calculate BM
-        let ygInput_0 = ygInput.value[0];
-        let ygInput_1 = ygInput.value[1];
-        await fetch("./data/birim-maliyet.json").then((response) => response.json()).then((tablo1_data) => {
-            BM = tablo1_data[ygInput_0 + ". sinif yapilar"][ygInput_1];
-        });
-
-        //* Calculate HBK
-        await fetch("./data/hizmet-bedeli-cetveli.csv").then((response) => response.text()).then((d) => {
-            data = d.split("\n");
-            data.shift();
-
-            let existing_YA_values = [];
-            for (let index = 0; index < data.length; index++) {
-                const row = data[index].split(",");
-                existing_YA_values.push(parseInt(row[0]));
-            }
-
-            if (YA <= 600) {
-                const reference_row = data[0].split(",");
-                HBK = parseFloat(reference_row[1]) / 1000;
-            }
-            else {
-                if(existing_YA_values.includes(YA)){ // no need for interpolation, data already exists.
-                    for (let index = 0; index < data.length; index++) {
-                        const row = data[index].split(",");
-                        if (parseInt(row[0]) == YA) {
-                            const reference_row = data[index].split(",");
-                            HBK = parseFloat(reference_row[1]) / 1000;
-                            break;
-                        }
-                    }
-                }
-                else{ // use linear interpolation
-                    for (let index = 0; index < data.length; index++) {
-                        const row = data[index].split(",");
-    
-                        if (parseInt(row[0]) > YA) {
-                            const reference_row1 = data[index - 1].split(",");
-                            const reference_row2 = data[index].split(",");
-
-                            HBK = (linear_interpolation(
-                                [parseInt(reference_row1[0]),parseFloat(reference_row1[1])],
-                                [parseInt(reference_row2[0]),parseFloat(reference_row2[1])],
-                                YA
-                            )) / 1000;
-                            break;
-                        }
-                    }
-                }
-            }
-        });
-
-        //* Calculate PYK
-        await fetch("./data/proje-yineleme-katsayisi.json").then((response) => response.json()).then((tablo5_data) => {
-            let result = 0;
-            for (let index = 1; index <= uygulama_sayisi_tab2; index++) {
-                let k;
-                if (index <= 4) k = index.toString();
-                else k = ">4";
-
-                result += tablo5_data[k];
-            }
-            PYK = parseFloat(result.toPrecision(4));
-        });
-
-        let result = YA * BM * HBK * PYK;
-        let _result = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(result);
-        // result = parseFloat(result.toPrecision(3));
-
-        //* Log the calculation to the console
-        const debug_log = {
-            "HBK" : HBK,
-            "BM": BM,
-            "PYK": PYK,
-        };
-        console.table(debug_log);
-        console.info(_result);
-
-        //* Display the result on UI
-        document.getElementById("resultDiv_tab2").replaceChildren();
-        let p = document.createElement("p");
-        p.innerHTML = "Mesleki Denetim Hizmet Bedeli Ücreti: " + _result;
-        p.className = "text-center mt-4 fs-5";
-        document.getElementById("resultDiv_tab2").appendChild(p);
-
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: "smooth"
-          });
-    }
-}
-
-async function display_result(result){
+async function display_result(result) {
     //* If the project type is "yeni proje", a table will be displayed.
     //* Otherwise, just a text will be displayed.
     //* This is why the if statement is needed.
 
     document.getElementById("resultDiv").replaceChildren();
 
-    if(document.getElementById("yeni proje").checked){
-        
-        document.getElementById("resultDiv").innerHTML+= `
+    if (document.getElementById("yeni proje").checked) {
+
+        document.getElementById("resultDiv").innerHTML += `
             <div class="table-responsive mt-4">
                 <table class="table">
                     <thead class="table-light">
@@ -406,8 +266,8 @@ async function display_result(result){
                 let _tsv = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(tsv);
                 document.querySelector("table tbody").innerHTML += `
                     <tr>
-                        <td>`+document.querySelector("label[for='"+ sc.id +"']").innerHTML+`</td>
-                        <td class="text-end">`+_tsv+`</td>
+                        <td>`+ document.querySelector("label[for='" + sc.id + "']").innerHTML + `</td>
+                        <td class="text-end">`+ _tsv + `</td>
                     </tr>
                 `;
                 total_price += tsv;
@@ -417,10 +277,10 @@ async function display_result(result){
         document.querySelector("table tfoot tr th.text-end").innerHTML += _total_price;
 
     }
-    else{
+    else {
         let _result = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(result);
         const sr = document.querySelector('input[name="options"]:checked').id; // sr = selected radiobutton
-        const label = document.querySelector("label[for='"+sr+"']").innerHTML;
+        const label = document.querySelector("label[for='" + sr + "']").innerHTML;
         let p = document.createElement("p");
         p.innerHTML = label + " Ücreti: " + _result;
         p.className = "text-center mt-4 fs-5";
@@ -430,7 +290,7 @@ async function display_result(result){
     window.scrollTo({
         top: document.body.scrollHeight,
         behavior: "smooth"
-      });
+    });
 }
 
 /** if a checkbox is selected, 
@@ -462,7 +322,7 @@ function deselect_checkboxes() {
  * 
  * x = the x value between x1 and x2
  */
-function linear_interpolation(point1, point2, x){
+function linear_interpolation(point1, point2, x) {
     let diff_x = point1[0] - point2[0];
     let diff_y = point1[1] - point2[1];
     return point1[1] + ((x - point1[0]) * diff_y / diff_x);
